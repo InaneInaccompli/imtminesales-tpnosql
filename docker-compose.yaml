@@ -4,9 +4,9 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_USER: username # The PostgreSQL user (useful to connect to the database)
-      POSTGRES_PASSWORD: password # The PostgreSQL password (useful to connect to the database)
-      POSTGRES_DB: default_database # The PostgreSQL default database (automatically created at first launch)
+      POSTGRES_USER: ${POSTGRES_USER} # The PostgreSQL user (useful to connect to the database)
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} # The PostgreSQL password (useful to connect to the database)
+      POSTGRES_DB: ${POSTGRES_DB} # The PostgreSQL default database (automatically created at first launch)
     env_file:
       - .env
     volumes:
@@ -20,7 +20,7 @@ services:
       - /$HOME/neo4j/data:/data
       - /$HOME/neo4j/plugins:/plugins
     environment:
-      - NEO4J_AUTH=neo4j/your_password 
+      - NEO4J_AUTH=${NEO4J_AUTH}
     ports:
       - "7474:7474"
       - "7687:7687"
@@ -28,3 +28,11 @@ services:
 
   website:
     build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database_sql
+      - database_nosql
+    environment:
+      - DB_SQL_HOST=database_sql
+      - DB_NOSQL_HOST=database_nosql
