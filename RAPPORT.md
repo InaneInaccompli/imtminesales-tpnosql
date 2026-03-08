@@ -2,6 +2,10 @@
 
 ## Analyse d'influence en réseau social
 
+**Réalisé par :** Evan VITALIS & Simon BOURLIER
+
+**Dépôt GitHub :** [https://github.com/InaneInaccompli/imtminesales-tpnosql](https://github.com/InaneInaccompli/imtminesales-tpnosql)
+
 ---
 
 ## Table des matières
@@ -244,7 +248,9 @@ Cette requête est la plus complexe car elle implique :
 
 L'import a été réalisé avec les paramètres par défaut (1M users, 10K produits, 0-5 commandes/user, 0-20 followers/user).
 
-![Résultats de l'import dans les deux bases](images_rapport/image1.png)
+<p align="center">
+  <img src="images_rapport/image1.png" alt="Résultats de l'import dans les deux bases" width="500" />
+</p>
 
 *Figure 1 — Résultats de l'import : temps d'injection pour PostgreSQL et Neo4j.*
 
@@ -252,25 +258,33 @@ L'import en bulk via `INSERT ... VALUES` (PostgreSQL) et `UNWIND` (Neo4j) est cr
 
 ### 5.2 Requête 1 — Produits commandés par les cercles de followers (profondeur faible)
 
-![Requête Followers — profondeur faible](images_rapport/image2.png)
+<p align="center">
+  <img src="images_rapport/image2.png" alt="Requête Followers — profondeur faible" width="500" />
+</p>
 
 *Figure 2 — Requête « Followers » avec un niveau de profondeur faible : comparaison PostgreSQL vs Neo4j.*
 
 ### 5.3 Requête 1 — Produits commandés par les cercles de followers (profondeur élevée)
 
-![Requête Followers — profondeur élevée](images_rapport/image3.png)
+<p align="center">
+  <img src="images_rapport/image3.png" alt="Requête Followers — profondeur élevée" width="500" />
+</p>
 
 *Figure 3 — Requête « Followers » avec un niveau de profondeur élevé : comparaison PostgreSQL vs Neo4j.*
 
 ### 5.4 Requête 2 — Influence sur un produit spécifique (profondeur faible)
 
-![Requête Produit spécifique — profondeur faible](images_rapport/image4.png)
+<p align="center">
+  <img src="images_rapport/image4.png" alt="Requête Produit spécifique — profondeur faible" width="500" />
+</p>
 
 *Figure 4 — Requête « Produit spécifique » avec un niveau de profondeur faible : comparaison PostgreSQL vs Neo4j.*
 
 ### 5.5 Requête 2 — Influence sur un produit spécifique (profondeur élevée)
 
-![Requête Produit spécifique — profondeur élevée](images_rapport/image5.png)
+<p align="center">
+  <img src="images_rapport/image5.png" alt="Requête Produit spécifique — profondeur élevée" width="500" />
+</p>
 
 *Figure 5 — Requête « Produit spécifique » avec un niveau de profondeur élevé : comparaison PostgreSQL vs Neo4j.*
 
